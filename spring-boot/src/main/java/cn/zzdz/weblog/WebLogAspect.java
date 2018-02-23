@@ -1,4 +1,4 @@
-package weblog;
+package cn.zzdz.weblog;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;

@@ -1,4 +1,4 @@
-package weblog;
+package cn.zzdz.weblog;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
