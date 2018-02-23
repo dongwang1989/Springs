@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication
 public class Logout {
-	public static @RequestMapping("/logout") String logout(HttpSession session) {
-		// 移除session
+	 @RequestMapping("/logout") 
+	 String logout(HttpSession session) {
 		session.removeAttribute("username");
 		return "退出成功";
 	}
