@@ -28,65 +28,69 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Aspect
 @Component
-@SpringBootApplication
+@Order(1)
 public class WebLogAspect {
-	private Logger logger =  LoggerFactory.getLogger(this.getClass());
-	/** 
-     * 定义拦截规则：拦截com.xjj.web.controller包下面的所有类中，有@RequestMapping注解的方法。 
-     */  
-	@Pointcut("execution(* src.main.java.Login..*.*(..))")  // and @annotation(org.springframework.web.bind.annotation.RequestMapping)
-	public void webLog(){}
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	/**
+	 * 定义拦截规则：拦截com.xjj.web.controller包下面的所有类中，有@RequestMapping注解的方法。
+	 */
+	@Pointcut("execution(* cn.zzdz.login..*.*(..))") // and
+															// @annotation(org.springframework.web.bind.annotation.RequestMapping)
+	public void webLog() {
+	}
+
 	@Before("webLog()")
-    public void doBefore(JoinPoint joinPoint){
+	public void doBefore(JoinPoint joinPoint) {
 		// 接收到请求，记录请求内容
-		System.out.println("运行前");
-       logger.info("WebLogAspect.doBefore()");
+		System.out.println("日志前");
+		logger.info("WebLogAspect.doBefore()");
 
-       ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
-        HttpServletRequest request = attributes.getRequest();
+		HttpServletRequest request = attributes.getRequest();
 
-     // 记录下请求内容
+		// 记录下请求内容
 
-       logger.info("URL : " + request.getRequestURL().toString());
+		logger.info("URL : " + request.getRequestURL().toString());
 
-       logger.info("HTTP_METHOD : " + request.getMethod());
+		logger.info("HTTP_METHOD : " + request.getMethod());
 
-       logger.info("IP : " + request.getRemoteAddr());
+		logger.info("IP : " + request.getRemoteAddr());
 
-       logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+		logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "."
+				+ joinPoint.getSignature().getName());
 
-       logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+		logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
 
-      //获取所有参数方法一：
+		// 获取所有参数方法一：
 
-       Enumeration<String> enu=request.getParameterNames(); 
+		Enumeration<String> enu = request.getParameterNames();
 
-       while(enu.hasMoreElements()){ 
+		while (enu.hasMoreElements()) {
 
-           String paraName=(String)enu.nextElement(); 
+			String paraName = (String) enu.nextElement();
 
-           System.out.println(paraName+": "+request.getParameter(paraName)); 
+			System.out.println(paraName + ": " + request.getParameter(paraName));
 
-       } 
+		}
 
-    }
+	}
 
-    
 	@After("webLog()")
-    public void doAfter(){
+	public void doAfter() {
 		System.out.println("wwwzzzaaa");
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
-        logger.info("url = {} end of execution", request.getRequestURL());
-    }
-    @AfterReturning("webLog()")
+		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpServletRequest request = attributes.getRequest();
+		logger.info("url = {} end of execution", request.getRequestURL());
+	}
 
-    public void  doAfterReturning(JoinPoint joinPoint){
-    	System.out.println("www");
-      // 处理完请求，返回内容
+	@AfterReturning("webLog()")
 
-       logger.info("WebLogAspect.doAfterReturning()");
+	public void doAfterReturning(JoinPoint joinPoint) {
+		System.out.println("www");
+		// 处理完请求，返回内容
+		logger.info("WebLogAspect.doAfterReturning()");
 
-    }
+	}
 }

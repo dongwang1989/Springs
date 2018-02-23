@@ -2,15 +2,16 @@ package cn.zzdz.login;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.http.HttpSession;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.sf.json.JSONObject;
 
 @RestController
-@SpringBootApplication
 public class Hello {
 	@RequestMapping("/hello")
 	public String hello(HttpSession session) {
@@ -24,6 +25,13 @@ public class Hello {
 			System.out.println(values);
 		}
 		return values;
+	}
+	@RequestMapping("/hello/{param}")
+	public String hello2(@PathVariable String param) {
+		Map<String, String> ma = new HashMap<String, String>();
+		ma.put("result", param);
+		JSONObject jsonObject = JSONObject.fromObject(ma);
+		return jsonObject.toString();
 	}
 
 }
