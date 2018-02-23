@@ -2,6 +2,7 @@ package Domain;
 
 public class User {
 	private String  name;
+	private String ss;
 	private int age;
 	private String sex;
 	private String user;
@@ -35,6 +36,12 @@ public class User {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public String getSs() {
+		return ss;
+	}
+	public void setSs(String ss) {
+		this.ss = ss;
 	}
 	
 	
