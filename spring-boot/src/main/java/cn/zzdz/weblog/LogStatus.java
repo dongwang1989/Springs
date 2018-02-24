@@ -2,7 +2,6 @@ package cn.zzdz.weblog;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,7 +18,7 @@ public class LogStatus {
 	@Pointcut("execution(* cn.zzdz.login.Hello.*(..))")
 	public void logsta() {
 	}
-//dao数据库  dto//业务处理
+//dao数据库  dto//从数据库查出数据传输
 	@Around("logsta()")
 	public Object aroundStatus(ProceedingJoinPoint pjp) throws Throwable {
 		Object proceed;
@@ -37,14 +36,6 @@ public class LogStatus {
 		{
 			proceed="403";
 		}
-		// 获取执行方法的参数
-		//Object[] args = pjp.getArgs();
-
-		// 从参数列表中获取参数对象
-		/*for (Object obj : args) {// 查看参数值
-			System.out.println("***********" + obj.toString());
-		}*/
-		
 		System.out.println("这是环绕通知之后的部分!!");
 		return proceed;
 	}
