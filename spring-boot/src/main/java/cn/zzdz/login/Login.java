@@ -1,15 +1,14 @@
 package cn.zzdz.login;
 
 import javax.servlet.http.HttpSession;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Login {
-	@RequestMapping("/login") // @PathVariable String username,@PathVariable String pwd
+	@RequestMapping(value="/login",method=RequestMethod.POST) // @PathVariable String username,@PathVariable String pwd
 	public String log(@RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "pwd", required = true) String pwd, HttpSession session) {
 		String values;

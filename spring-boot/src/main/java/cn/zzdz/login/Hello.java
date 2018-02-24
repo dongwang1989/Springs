@@ -13,6 +13,11 @@ import net.sf.json.JSONObject;
 
 @RestController
 public class Hello {
+	/*
+	 * @PathVariable获取占位符
+	 * @RequestParam获取参数get/post都可以Content-Type: 为 application/x-www-form-urlencoded(http请求中默认)
+	 * @RequestBody不允许get允许post 一般处理非Content-Type: 为 application/x-www-form-urlencoded(http请求中默认)
+	 * */
 	@RequestMapping("/hello")
 	public String hello(HttpSession session) {
 		String values = "403";
