@@ -10,8 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Login {
+	/**
+	 * 其中接受参数用RequestBody或RequestParam都可以
+	 * @param username
+	 * @param pwd
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST) // @PathVariable String username,@PathVariable String															// pwd
-	public String log(@RequestBody String username, @RequestBody String pwd, HttpSession session) {
+	public String log(@RequestParam String username, @RequestParam String pwd, HttpSession session) {
 		String values;
 		Object strses = session.getAttribute("username");
 		if (strses != null && !strses.equals("")) {

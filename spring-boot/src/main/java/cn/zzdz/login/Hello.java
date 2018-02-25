@@ -32,11 +32,10 @@ public class Hello {
 		return values;
 	}
 	@RequestMapping("/hello/{param}")
-	public String hello2(@PathVariable String param) {
+	public Map<String, String> hello2(@PathVariable String param) {
 		Map<String, String> ma = new HashMap<String, String>();
 		ma.put("result", param);
-		JSONObject jsonObject = JSONObject.fromObject(ma);
-		return jsonObject.toString();
+		return ma;
 	}
 
 }
