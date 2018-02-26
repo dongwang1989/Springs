@@ -34,6 +34,7 @@ public class Login {
 			values = "当前账号" + session.getAttribute("username") + "已经登陆！";
 		} else {
 			User user=userService.getUser(username, pwd);
+			System.out.println(user);
 			if (user!= null) {
 				values = "登陆成功";
 				session.setAttribute("username",user.getUsername());

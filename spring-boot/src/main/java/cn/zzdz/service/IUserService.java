@@ -17,5 +17,9 @@ public interface IUserService {
 	public User findUserinfoByuser(String username);
 
 	public List<User> findUserinfo2(String username);
+	
+	public User findUserinfoByuser3(String username);
+	
+	public void delUserInfo(String id);
 
 }

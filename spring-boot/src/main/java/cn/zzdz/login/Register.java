@@ -12,22 +12,30 @@ import cn.zzdz.service.IUserService;
 @RestController
 public class Register {
 	@Autowired
-	IUserService userService ;
-	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String register(@RequestParam(value="name",required=true) String name,
-			@RequestParam(value="sex",required=true) String sex,
-			@RequestParam(value="age",required=true) int age,
-			@RequestParam(value="username",required=true) String username,
-			@RequestParam(value="pwd",required=true) String pwd )
-	{
+	IUserService userService;
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(@RequestParam(value = "name", required = true) String name,
+			@RequestParam(value = "sex", required = true) String sex,
+			@RequestParam(value = "age", required = true) int age,
+			@RequestParam(value = "username", required = true) String username,
+			@RequestParam(value = "pwd", required = true) String pwd) {
+		String values="";
 		
-		User user  = new User();
-		user.setName(name);
-		user.setAge(age);
-		user.setUsername(username);
-		user.setSex(sex);
-		user.setPwd(pwd);
-		userService.saveUser(user);
-		return "";	
+		if (userService.findUserinfoByuser(username) == null) {
+			User user = new User();
+			user.setName(name);
+			user.setAge(age);
+			user.setUsername(username);
+			user.setSex(sex);
+			user.setPwd(pwd);
+			userService.saveUser(user);
+			
+		}
+		else
+		{
+			values="已存在此用户更改用户名";
+		}
+		return values;
 	}
 }
