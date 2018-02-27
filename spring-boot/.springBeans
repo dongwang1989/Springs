@@ -8,13 +8,10 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>java:cn.zzdz.login.Hello</config>
-		<config>java:cn.zzdz.login.Logout</config>
 		<config>java:cn.zzdz.weblog.WebLogAspect</config>
-		<config>java:cn.zzdz.login.Login</config>
 	</configs>
 	<autoconfigs>
 		<config>java:cn.zzdz.Run</config>
-		<config>java:cn.zzdz.weblog.RemoveSession</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
