@@ -1,4 +1,4 @@
-package cn.zzdz.login;
+package cn.zzdz.hellocontroller;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +9,9 @@ import cn.zzdz.dto.ResultDto;
 import cn.zzdz.service.IUserService;
 
 @RestController
-public class Hello {
+public class HelloController {
 	@Autowired
-	IUserService userservice;
+	private IUserService userservice;
 
 	/*
 	 * @PathVariable获取占位符
@@ -23,13 +23,13 @@ public class Hello {
 	 * application/x-www-form-urlencoded(http请求中默认)
 	 */
 	@RequestMapping("/hello")
-	public ResultDto hello(HttpSession session) {
-		return userservice.hello(session);
+	public ResultDto sayHello(HttpSession session) {
+		return userservice.sayHello(session);
 	}
 
 	@RequestMapping("/hello/{param}")
-	public ResultDto hello2(@PathVariable String param) {
-		return userservice.hello2(param);
+	public ResultDto getHello(@PathVariable String param) {
+		return userservice.getHello(param);
 	}
 
 }

@@ -14,18 +14,16 @@ import cn.zzdz.service.IUserService;
 @RestController
 public class UserController {
 	@Autowired
-	IUserService userService;
+	private IUserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
-	public ResultDto log(@RequestBody String username, @RequestBody String pwd, HttpSession session) {
-		ResultDto userdto = userService.getUser2(username, pwd, session);
-		return userdto;
+	public ResultDto log(@RequestBody UserDto userdtolog, HttpSession session) {
+		return userService.getUser(userdtolog, session);
 	}
 
 	@RequestMapping("/user")
-	public UserDto getUser(@RequestParam String username) {
-		UserDto userdto = userService.findUserinfoByuser3(username);
-		return userdto;
+	public UserDto getUser(@RequestParam String username,HttpSession session) {
+		return userService.findUserInfoByuser(username,session);
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
