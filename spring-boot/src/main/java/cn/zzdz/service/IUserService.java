@@ -1,6 +1,8 @@
 package cn.zzdz.service;
 
 import javax.servlet.http.HttpSession;
+
+import cn.zzdz.domain.UserInfo;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
 
@@ -20,4 +22,5 @@ public interface IUserService {
 
 	public ResultDto getHello(String param);
 
+	public UserInfo log(String username);
 }

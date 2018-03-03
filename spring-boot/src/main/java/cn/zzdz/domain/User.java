@@ -1,11 +1,12 @@
 package cn.zzdz.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User implements Serializable {
+public class User implements Serializable  {
 	/**
 	 * 
 	 */
@@ -23,6 +24,8 @@ public class User implements Serializable {
 	private String username;
 	private String pwd;
 
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -71,4 +74,5 @@ public class User implements Serializable {
 		this.pwd = pwd;
 	}
 
+	
 }
