@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.zzdz.domain.User;
-import cn.zzdz.domain.UserInfo;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
 import cn.zzdz.repository.UserJpaRepository;
@@ -18,6 +17,7 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserJpaRepository userJpaRepository;
 
+	@Override
 	public ResultDto saveUser(UserDto userDto) {
 		ResultDto resultDto = new ResultDto();
 		if (userJpaRepository.findUserinfoBylog(userDto.getUsername()) == null) {
@@ -43,14 +43,17 @@ public class UserServiceImpl implements IUserService {
 	public ResultDto getUser(UserDto userDtolog, HttpSession session) {
 		ResultDto resultDto = new ResultDto();
 		String strses = session.getAttribute("username").toString();
+		System.out.println(strses);
 		if (strses != null && !strses.equals("")) {
 			resultDto.setResult("当前账号" + session.getAttribute("username") + "已经登陆！");
 		} else {
 			User user = userJpaRepository.getUser(userDtolog.getUsername(), userDtolog.getPwd());
 			if (user != null) {
+				System.out.println("登陆成功");
 				resultDto.setResult("登陆成功");
 				session.setAttribute("username", user.getUsername());
 			} else {
+				System.out.println("登陆");
 				resultDto.setResult("登陆error");
 			}
 		}
@@ -60,14 +63,14 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserDto findUserInfoByuser(String username, HttpSession session) {
 		UserDto userDto = new UserDto();
-		if (session.getAttribute("username") != null && session.getAttribute("username").equals(username)) {
+		//if (session.getAttribute("username") != null && session.getAttribute("username").equals(username)) {
 			User user = userJpaRepository.findUserInfoByuser(username);
 			userDto.setName(user.getName());
 			userDto.setAge(user.getAge());
 			userDto.setSex(user.getSex());
 			userDto.setUsername(user.getUsername());
 			userDto.setPwd("***");
-		}
+		//}
 
 		return userDto;
 	}
@@ -81,53 +84,22 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public ResultDto logout(HttpSession session) {
 		ResultDto resultDto = new ResultDto();
-		if (session.getAttribute("username") != null) {
-			resultDto.setResult("退出登录！");
-		} else {
-			resultDto.setResult("403");
-		}
+		resultDto.setResult("退出登录！");
 		return resultDto;
 	}
+
 	@Override
 	public ResultDto sayHello(HttpSession session) {
 		ResultDto resultDto = new ResultDto();
-		if (session.getAttribute("username") != null) {
-			resultDto.setResult("Hello World");
-		} else {
-			resultDto.setResult("403");
-		}
+		resultDto.setResult("Hello World");
 		return resultDto;
 	}
-//	@Override
-//	public ResultDto sayHello(HttpSession session) {
-//		ResultDto resultDto = new ResultDto();
-//		if (session.getAttribute("username") != null) {
-//			resultDto.setResult("Hello World");
-//		} else {
-//			resultDto.setResult("403");
-//		}
-//		return resultDto;
-//	}
 
 	@Override
 	public ResultDto getHello(String param) {
 		ResultDto resultDto = new ResultDto();
 		resultDto.setResult(param);
 		return resultDto;
-	}
-
-	@Override
-	public UserInfo log(String username) {
-		
-		UserInfo userinfo=null;
-		User user = userJpaRepository.findUserInfoByuser(username);//findUserinfoBylog
-		System.out.println(user.getName());
-		if(user!=null)
-		{
-			userinfo = new UserInfo(user.getName(), user.getAge(), user.getSex(), user.getUsername(), user.getPwd());
-		}
-		
-		return userinfo;
 	}
 
 }

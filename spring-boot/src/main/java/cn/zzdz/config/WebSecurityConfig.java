@@ -5,30 +5,29 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
-
-import cn.zzdz.repository.ContentRepository;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	// @Autowired
+	// @Qualifier("ContentRepository")
+	// private SecurityContextRepository contentrepository;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.securityContext().securityContextRepository(securitysss())
-		.and()
-			.authorizeRequests()
-				.antMatchers("/", "/hello/{param}", "/login").permitAll()
-				.anyRequest().authenticated()
-				.and()  
-		        .logout()  
-		            .permitAll()//定义logout不需要验证  
-		            .and()  
-		        .formLogin();//使用form表单登录  ;
+		http.securityContext().securityContextRepository(pasecurity()).and().authorizeRequests()
+				.antMatchers("/", "/hello/{param}", "/login", "/logins", "/whoim").permitAll().anyRequest()
+				.authenticated();
+		// .and()
+		// .logout().permitAll()// 定义logout不需要验证
+		// .and().formLogin();// 使用form表单登录 ;
 	}
 
 	@Bean
-	public SecurityContextRepository securitysss() {
-		return new ContentRepository();
+	public SecurityContextRepository pasecurity() {
+		return new HttpSessionSecurityContextRepository();
 
 	}
 	// @Autowired
