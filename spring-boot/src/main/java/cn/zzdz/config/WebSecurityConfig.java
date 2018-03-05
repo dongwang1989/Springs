@@ -18,7 +18,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 			.authorizeRequests()
 				.antMatchers("/", "/hello/{param}", "/login").permitAll()
-				.anyRequest().authenticated();
+				.anyRequest().authenticated()
+				.and()  
+		        .logout()  
+		            .permitAll()//定义logout不需要验证  
+		            .and()  
+		        .formLogin();//使用form表单登录  ;
 	}
 
 	@Bean

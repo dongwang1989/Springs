@@ -24,7 +24,7 @@ public class ContentRepository implements SecurityContextRepository {
 			userdto.setUsername(getcontext.toString());
 			System.out.println("context:");
 		}
-		return (SecurityContext) userdto;
+		return null;
 	}
 
 	@Override
