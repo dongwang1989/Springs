@@ -6,16 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User implements Serializable  {
+public class User implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 
+	 *
 	 */
-	// private static final long serialVersionUID = 1L;
-	// @GeneratedValue(strategy=GenerationType.AUTO)
+
 	@Id
 	public int id;
 	private String name;
@@ -24,8 +23,6 @@ public class User implements Serializable  {
 	private String username;
 	private String pwd;
 
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -74,5 +71,4 @@ public class User implements Serializable  {
 		this.pwd = pwd;
 	}
 
-	
 }

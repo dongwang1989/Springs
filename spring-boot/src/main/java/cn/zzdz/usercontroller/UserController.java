@@ -51,8 +51,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/hello/{param}")
-	public ResultDto getHello(@PathVariable String param, HttpSession session) {
-		session.setAttribute("username", "zhangsan");
+	public ResultDto getHello(@PathVariable String param) {
 		return userService.getHello(param);
 	}
 
