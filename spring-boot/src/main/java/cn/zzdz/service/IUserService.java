@@ -11,13 +11,13 @@ public interface IUserService {
 
 	public ResultDto saveUser(UserDto userdto);
 
-	public UserDto findUserInfoByuser(String username, HttpSession session);
+	public UserDto findUserInfoByuser(String username);
 
 	public int delUserInfo(int id);
 
 	public ResultDto logout(HttpSession session);
 
-	public ResultDto sayHello(HttpSession session);
+	public ResultDto sayHello();
 
 	public ResultDto getHello(String param);
 }

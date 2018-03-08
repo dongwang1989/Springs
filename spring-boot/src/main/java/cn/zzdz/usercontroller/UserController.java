@@ -22,13 +22,12 @@ public class UserController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
 	public ResultDto log(@RequestBody UserDto userdtolog, HttpSession session) {
-		System.out.println("123");
 		return userService.getUser(userdtolog, session);
 	}
 
 	@RequestMapping("/user")
-	public UserDto getUser(@RequestParam String username, HttpSession session) {
-		return userService.findUserInfoByuser(username, session);
+	public UserDto getUser(@RequestParam String username) {
+		return userService.findUserInfoByuser(username);
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -36,24 +35,25 @@ public class UserController {
 		return userService.saveUser(userdto);
 	}
 
-	@RequestMapping("/logout")
+	@RequestMapping("/loginout")
 	public ResultDto logout(HttpSession session) {
 		return userService.logout(session);
 	}
 
 	@RequestMapping("/whoim")
-	public Object whoIm() {
-		return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public String whoIm() {
+		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 	}
 
 	@RequestMapping("/hello")
-	public ResultDto sayHello(HttpSession session) {
-		System.out.println("s");
-		return userService.sayHello(session);
+	public ResultDto sayHello() {
+		return userService.sayHello();
 	}
 
 	@RequestMapping("/hello/{param}")
-	public ResultDto getHello(@PathVariable String param) {
+	public ResultDto getHello(@PathVariable String param, HttpSession session) {
+		session.setAttribute("username", "zhangsan");
 		return userService.getHello(param);
 	}
+
 }

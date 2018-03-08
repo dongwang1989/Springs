@@ -2,7 +2,9 @@ package cn.zzdz.weblog;
 
 import java.util.Arrays;
 import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -25,15 +27,14 @@ public class WebLogAspect {
 	/**
 	 * 定义拦截规则：拦截com.xjj.web.controller包下面的所有类中，有@RequestMapping注解的方法。
 	 */
-	@Pointcut("execution(* cn.zzdz.login..*.*(..))") // and
-															// @annotation(org.springframework.web.bind.annotation.RequestMapping)
+	@Pointcut("execution(* cn.zzdz.usercontroller..*.*(..))") // and
+																// @annotation(org.springframework.web.bind.annotation.RequestMapping)
 	public void webLog() {
 	}
 
 	@Before("webLog()")
 	public void doBefore(JoinPoint joinPoint) {
 		// 接收到请求，记录请求内容
-		System.out.println("日志前");
 		logger.info("WebLogAspect.doBefore()");
 
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -59,7 +60,7 @@ public class WebLogAspect {
 
 		while (enu.hasMoreElements()) {
 
-			String paraName = (String) enu.nextElement();
+			String paraName = enu.nextElement();
 
 			System.out.println(paraName + ": " + request.getParameter(paraName));
 
@@ -69,7 +70,6 @@ public class WebLogAspect {
 
 	@After("webLog()")
 	public void doAfter() {
-		System.out.println("wwwzzzaaa");
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
 		logger.info("url = {} end of execution", request.getRequestURL());
@@ -78,7 +78,6 @@ public class WebLogAspect {
 	@AfterReturning("webLog()")
 
 	public void doAfterReturning(JoinPoint joinPoint) {
-		System.out.println("www");
 		// 处理完请求，返回内容
 		logger.info("WebLogAspect.doAfterReturning()");
 

@@ -3,6 +3,7 @@ package cn.zzdz.service.impl;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +44,8 @@ public class UserServiceImpl implements IUserService {
 	public ResultDto getUser(UserDto userDtolog, HttpSession session) {
 		ResultDto resultDto = new ResultDto();
 		String strses = session.getAttribute("username").toString();
-		System.out.println(strses);
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString() + "-"
+				+ SecurityContextHolder.getContext().getAuthentication().getDetails().toString());
 		if (strses != null && !strses.equals("")) {
 			resultDto.setResult("当前账号" + session.getAttribute("username") + "已经登陆！");
 		} else {
@@ -61,16 +63,18 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserDto findUserInfoByuser(String username, HttpSession session) {
+	public UserDto findUserInfoByuser(String username) {
+		SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		UserDto userDto = new UserDto();
-		//if (session.getAttribute("username") != null && session.getAttribute("username").equals(username)) {
-			User user = userJpaRepository.findUserInfoByuser(username);
+		String usernamea = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		User user = userJpaRepository.findUserInfoByuser(usernamea);
+		if (user != null) {
 			userDto.setName(user.getName());
 			userDto.setAge(user.getAge());
 			userDto.setSex(user.getSex());
 			userDto.setUsername(user.getUsername());
 			userDto.setPwd("***");
-		//}
+		}
 
 		return userDto;
 	}
@@ -84,12 +88,13 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public ResultDto logout(HttpSession session) {
 		ResultDto resultDto = new ResultDto();
+		session.removeAttribute("username");
 		resultDto.setResult("退出登录！");
 		return resultDto;
 	}
 
 	@Override
-	public ResultDto sayHello(HttpSession session) {
+	public ResultDto sayHello() {
 		ResultDto resultDto = new ResultDto();
 		resultDto.setResult("Hello World");
 		return resultDto;

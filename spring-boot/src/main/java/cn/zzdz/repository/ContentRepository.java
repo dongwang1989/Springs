@@ -1,8 +1,12 @@
 package cn.zzdz.repository;
 
+import java.util.Collections;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpRequestResponseHolder;
@@ -13,12 +17,18 @@ import org.springframework.stereotype.Component;
 public class ContentRepository implements SecurityContextRepository {
 	@Override
 	public SecurityContext loadContext(HttpRequestResponseHolder requestResponseHolder) {
-		Object getcontext = requestResponseHolder.getRequest().getSession().getAttribute("username");
-		System.out.println("session:" + getcontext);
-		if (getcontext == null) {
+		HttpSession session = requestResponseHolder.getRequest().getSession();
+		SecurityContext getcontext = null;
+		if (session == null || session.getAttribute("username") == null) {
 			getcontext = generateNewContext();
+		} else {// Authentication 令牌存信息用
+			// Collections.emptyList();//kong list readonly not addd yanjinxiefa
+			// Collections.unmodifiableList(list)//set readonly not change quanjuyingyong
+			getcontext = generateNewContext();
+			getcontext.setAuthentication(new UsernamePasswordAuthenticationToken(session.getAttribute("username"), "",
+					Collections.emptyList()));
 		}
-		return (SecurityContext) getcontext;
+		return getcontext;
 	}
 
 	@Override
