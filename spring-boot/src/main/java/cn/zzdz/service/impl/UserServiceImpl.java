@@ -7,10 +7,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.zzdz.dao.UserJpaRepository;
 import cn.zzdz.domain.User;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
-import cn.zzdz.repository.UserJpaRepository;
 import cn.zzdz.service.IUserService;
 
 @Service
