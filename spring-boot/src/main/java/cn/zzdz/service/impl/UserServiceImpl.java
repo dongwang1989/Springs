@@ -75,7 +75,6 @@ public class UserServiceImpl implements IUserService {
 			userDto.setUsername(user.getUsername());
 			userDto.setPwd("***");
 		}
-
 		return userDto;
 	}
 
