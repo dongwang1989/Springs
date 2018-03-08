@@ -21,7 +21,8 @@ public class ContentRepository implements SecurityContextRepository {
 		SecurityContext getcontext = null;
 		if (session == null || session.getAttribute("username") == null) {
 			getcontext = generateNewContext();
-		} else {// Authentication 令牌存信息用
+		} else {
+			// Authentication 令牌存信息用
 			// Collections.emptyList();//kong list readonly not addd yanjinxiefa
 			// Collections.unmodifiableList(list)//set readonly not change quanjuyingyong
 			getcontext = generateNewContext();

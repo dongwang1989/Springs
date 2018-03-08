@@ -35,7 +35,6 @@ public class ExceptionController extends AbstractErrorController {
 		Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
 		statusCode = statusCode == null ? HttpStatus.INTERNAL_SERVER_ERROR.value() : statusCode;
 		Map<String, Object> bodyfirst = new HashMap<>();
-
 		Map<String, Object> body = new HashMap<>();
 		HttpStatus status = getStatus(request);
 		body.put("code", statusCode);

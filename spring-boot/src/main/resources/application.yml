@@ -11,6 +11,6 @@ spring:
      
 server:
    error:
-     path: /error
+     path: /error 
      
      
