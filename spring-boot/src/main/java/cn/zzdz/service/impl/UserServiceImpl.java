@@ -54,7 +54,6 @@ public class UserServiceImpl implements IUserService {
 				resultDto.setResult("登陆成功");
 				session.setAttribute("username", user.getUsername());
 			} else {
-				System.out.println("登陆");
 				resultDto.setResult("登陆error");
 			}
 		}
