@@ -46,14 +46,11 @@ public class UserServiceImpl implements IUserService {
 	public ResultDto getUser(UserDto userDtolog, HttpSession session) {
 		ResultDto resultDto = new ResultDto();
 		String strses = session.getAttribute("username").toString();
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString() + "-"
-				+ SecurityContextHolder.getContext().getAuthentication().getDetails().toString());
 		if (strses != null && !strses.equals("")) {
 			resultDto.setResult("当前账号" + session.getAttribute("username") + "已经登陆！");
 		} else {
 			User user = userJpaRepository.getUser(userDtolog.getUsername(), userDtolog.getPwd());
 			if (user != null) {
-				System.out.println("登陆成功");
 				resultDto.setResult("登陆成功");
 				session.setAttribute("username", user.getUsername());
 			} else {
