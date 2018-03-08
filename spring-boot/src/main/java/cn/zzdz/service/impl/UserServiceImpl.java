@@ -29,7 +29,9 @@ public class UserServiceImpl implements IUserService {
 			user.setSex(user.getSex());
 			user.setPwd(user.getPwd());
 			try {
-				userJpaRepository.save(user);
+				User us = userJpaRepository.save(user);
+
+				System.out.println(us);
 				resultDto.setResult("1");
 			} catch (Exception e) {
 				resultDto.setResult("0");
@@ -64,7 +66,6 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public UserDto findUserInfoByuser(String username) {
-		SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		UserDto userDto = new UserDto();
 		String usernamea = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		User user = userJpaRepository.findUserInfoByuser(usernamea);
