@@ -15,8 +15,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.securityContext().securityContextRepository(createsecurity()).and().authorizeRequests()
-				.antMatchers("/", "/hello/{param}", "/login", "/whoim").permitAll().anyRequest().authenticated().and()
-				.csrf().disable();
+				.antMatchers("/", "/hello/{param}", "/login", "/whoim", "/exception/{param}").permitAll().anyRequest()
+				.authenticated().and().csrf().disable();
 	}
 
 	@Bean
