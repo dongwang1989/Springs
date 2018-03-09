@@ -16,7 +16,7 @@ public class ContentRepository implements SecurityContextRepository {
 	@Override
 	public SecurityContext loadContext(HttpRequestResponseHolder requestResponseHolder) {
 		HttpSession session = requestResponseHolder.getRequest().getSession();
-		SecurityContext getcontext = null;
+		SecurityContext getcontext;
 		if (session == null || session.getAttribute("username") == null) {
 			getcontext = generateNewContext();
 		} else {
