@@ -57,9 +57,7 @@ public class UserController {
 
 	@RequestMapping("/exception/checked")
 	public void checkedException() throws Exception {
-
 		throw new Exception("A");
-
 	}
 
 	@RequestMapping("/exception/runtime")
