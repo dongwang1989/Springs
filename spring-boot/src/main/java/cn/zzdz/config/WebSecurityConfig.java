@@ -10,7 +10,7 @@ import org.springframework.security.web.context.SecurityContextRepository;
 import cn.zzdz.repository.ContentRepository;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // 代理 不可能 weishenme 优先于aop 编译 运行时 为什么spring spring的拦截器是个什么
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cd.zzdz.permission.IPermission;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
 import cn.zzdz.service.IUserService;
@@ -40,16 +41,28 @@ public class UserController {
 		return userService.logout(session);
 	}
 
+	@IPermission("who")
 	@RequestMapping("/whoim")
 	public String whoIm() {
+		System.out.println("进入whoim");
 		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 	}
 
+	// @RequestMapping("/whoim2")
+	// public User whoIm2(HttpSession session) {
+	// User user = userService.findUserPermission(1);
+	// session.setAttribute("username", "zhangsan");
+	// session.setAttribute("permission", user.getPermission());
+	// return user;
+	// }
+
+	@IPermission("hello")
 	@RequestMapping("/hello")
 	public ResultDto sayHello() {
 		return userService.sayHello();
 	}
 
+	@IPermission("hello2")
 	@RequestMapping("/hello/{param}")
 	public ResultDto getHello(@PathVariable String param) {
 		return userService.getHello(param);

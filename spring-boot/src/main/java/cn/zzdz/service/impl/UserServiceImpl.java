@@ -53,6 +53,7 @@ public class UserServiceImpl implements IUserService {
 			if (user != null) {
 				resultDto.setResult("登陆成功");
 				session.setAttribute("username", user.getUsername());
+				session.setAttribute("permission", user.getPermission());
 			} else {
 				resultDto.setResult("登陆error");
 			}
@@ -102,5 +103,18 @@ public class UserServiceImpl implements IUserService {
 		resultDto.setResult(param);
 		return resultDto;
 	}
+
+	@Override
+	public User findUserPermission(Integer id) {
+		User user = userJpaRepository.findUserPermission(id);
+		System.out.println(user.getPermission());
+		return user;
+	}
+
+	// @Override
+	// public List<User> ListfindUserPermission(Integer id) {
+	// return userJpaRepository.ListfindUserinfo(id);
+	// // return null;
+	// }
 
 }

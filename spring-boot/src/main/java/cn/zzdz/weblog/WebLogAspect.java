@@ -20,21 +20,21 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Aspect
 @Component
-@Order(1)
+@Order(2)
 public class WebLogAspect {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 定义拦截规则：拦截com.xjj.web.controller包下面的所有类中，有@RequestMapping注解的方法。
 	 */
-	@Pointcut("execution(* cn.zzdz.usercontroller..*.*(..))") // and
+	@Pointcut("execution(* cn.zzdz.usercontroller..*.*(..))") // and* cn.zzdz.usercontroller..*.*(..)
 																// @annotation(org.springframework.web.bind.annotation.RequestMapping)
 	public void webLog() {
 	}
 
 	@Before("webLog()")
 	public void doBefore(JoinPoint joinPoint) {
-		// 接收到请求，记录请求内容
+		// 接收到请求，记录请求内容 先拦截器拦截
 		logger.info("WebLogAspect.doBefore()");
 
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -87,7 +87,7 @@ public class WebLogAspect {
 	 * public Object aroundStatus(ProceedingJoinPoint pjp) throws Throwable { Object
 	 * proceed; System.out.println("这是环绕通知之前的部分!!"); // 获取将要执行的方法名称 String
 	 * methodName = pjp.getSignature().getName();
-	 * 
+	 *
 	 * HttpServletRequest request = ((ServletRequestAttributes)
 	 * RequestContextHolder.getRequestAttributes()) .getRequest(); HttpSession
 	 * session = request.getSession(); if (session.getAttribute("username") != null)
