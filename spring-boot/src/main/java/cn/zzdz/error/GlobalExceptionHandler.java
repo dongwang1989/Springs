@@ -11,6 +11,10 @@ import cn.zzdz.dto.ExceptionDto;
 @ControllerAdvice // 给controller用的aop 所有controller
 @ResponseBody
 public class GlobalExceptionHandler {
+	public GlobalExceptionHandler() {
+		System.out.println("GlobalExceptionHandler");
+	}
+
 	@ExceptionHandler(value = RuntimeException.class)
 	public ExceptionDto runtimeExceptionHandler(HttpServletRequest request, Exception exception) throws Exception {
 		exception.printStackTrace();

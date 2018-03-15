@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ExceptionController extends AbstractErrorController {
+public class ExceptionController extends AbstractErrorController {// extends AbstractErrorController
 
 	public ExceptionController(ErrorAttributes errorAttributes) {
 		super(errorAttributes);
