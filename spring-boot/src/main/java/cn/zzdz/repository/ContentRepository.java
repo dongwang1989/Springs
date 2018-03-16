@@ -1,16 +1,21 @@
 package cn.zzdz.repository;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpRequestResponseHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
+
+import cn.zzdz.service.impl.AuthorityImpl;
 
 public class ContentRepository implements SecurityContextRepository {
 	@Override
@@ -23,9 +28,14 @@ public class ContentRepository implements SecurityContextRepository {
 			// Authenticatio 令牌存信息用
 			// Collections.emptyList();//kong list readonly not addd yanjinxiefa
 			// Collections.unmodifiableList(list)//set readonly not change quanjuyingyong
+			@SuppressWarnings("unchecked")
+			Set<String> set = (Set<String>) session.getAttribute("permission");
+			GrantedAuthority grantedauthority = new AuthorityImpl(set);
+			List<GrantedAuthority> list = new ArrayList<>();
+			list.add(grantedauthority);
 			getcontext = generateNewContext();
-			getcontext.setAuthentication(new UsernamePasswordAuthenticationToken(session.getAttribute("username"), "",
-					Collections.emptyList()));
+			getcontext.setAuthentication(
+					new UsernamePasswordAuthenticationToken(session.getAttribute("username"), "", list));
 		}
 		return getcontext;
 	}

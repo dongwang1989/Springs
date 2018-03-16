@@ -12,13 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 @Entity
 // @Table(name = "t_user")
-@NamedQueries({ @NamedQuery(name = "findUserWithId", query = "SELECT u FROM User u "),
-		@NamedQuery(name = "findUserWithName", query = "SELECT u FROM User u WHERE u.name = :name") })
+// @NamedQueries({ @NamedQuery(name = "findUserWithId", query = "SELECT u FROM
+// User u "),
+// @NamedQuery(name = "findUserWithName", query = "SELECT u FROM User u WHERE
+// u.name = :name") })
 public class User implements Serializable {
 	/**
 	 * EntityManager em = emf.createEntityManager(); Query query =

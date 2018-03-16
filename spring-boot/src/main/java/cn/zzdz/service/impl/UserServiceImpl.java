@@ -107,7 +107,6 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User findUserPermission(Integer id) {
 		User user = userJpaRepository.findUserPermission(id);
-		System.out.println(user.getPermission());
 		return user;
 	}
 
