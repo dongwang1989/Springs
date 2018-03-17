@@ -1,5 +1,7 @@
 package cn.zzdz.service;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import cn.zzdz.domain.User;
@@ -24,5 +26,7 @@ public interface IUserService {
 
 	public User findUserPermission(Integer id);
 
+	// @Cacheable(value = "users")
+	public Set<String> cafindUserInfoByuser(String username);
 	// public List<User> ListfindUserPermission(Integer id);
 }

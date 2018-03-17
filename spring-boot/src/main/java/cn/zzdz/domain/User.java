@@ -1,7 +1,6 @@
 package cn.zzdz.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
@@ -41,7 +40,7 @@ public class User implements Serializable {
 	@ElementCollection
 	@CollectionTable(name = "user_permission", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "permission")
-	private Set<String> permission = new HashSet<>();
+	private Set<String> permission;
 
 	public Set<String> getPermission() {
 		return permission;

@@ -1,5 +1,8 @@
 package cn.zzdz.usercontroller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,13 +51,13 @@ public class UserController {
 		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 	}
 
-	// @RequestMapping("/whoim2")
-	// public User whoIm2(HttpSession session) {
-	// User user = userService.findUserPermission(1);
-	// session.setAttribute("username", "zhangsan");
-	// session.setAttribute("permission", user.getPermission());
-	// return user;
-	// }
+	@RequestMapping("/whoim2")
+	public Set<String> whoIm2(HttpSession session) {
+		Set<String> set = new HashSet<>();
+		set = userService.cafindUserInfoByuser("zhangsan");
+		session.setAttribute("username", "zhangsan");
+		return set;
+	}
 
 	@IPermission("hello")
 	@RequestMapping("/hello")

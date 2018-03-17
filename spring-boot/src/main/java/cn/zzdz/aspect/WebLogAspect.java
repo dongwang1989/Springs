@@ -59,11 +59,8 @@ public class WebLogAspect {
 		Enumeration<String> enu = request.getParameterNames();
 
 		while (enu.hasMoreElements()) {
-
 			String paraName = enu.nextElement();
-
 			System.out.println(paraName + ": " + request.getParameter(paraName));
-
 		}
 
 	}

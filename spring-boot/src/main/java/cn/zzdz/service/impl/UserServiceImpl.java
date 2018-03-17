@@ -1,5 +1,8 @@
 package cn.zzdz.service.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +56,6 @@ public class UserServiceImpl implements IUserService {
 			if (user != null) {
 				resultDto.setResult("登陆成功");
 				session.setAttribute("username", user.getUsername());
-				session.setAttribute("permission", user.getPermission());
 			} else {
 				resultDto.setResult("登陆error");
 			}
@@ -110,10 +112,14 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 
-	// @Override
-	// public List<User> ListfindUserPermission(Integer id) {
-	// return userJpaRepository.ListfindUserinfo(id);
-	// // return null;
-	// }
-
+	@Override
+	@javax.transaction.Transactional
+	public Set<String> cafindUserInfoByuser(String username) {
+		System.out.println("cafindUserInfoByuser");
+		User user = new User();
+		Set<String> set = new HashSet<>();
+		user = userJpaRepository.findUserinfoBylog(username);
+		set = user.getPermission();
+		return set;
+	}
 }
