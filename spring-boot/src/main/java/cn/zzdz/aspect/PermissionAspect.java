@@ -1,13 +1,11 @@
 package cn.zzdz.aspect;
 
-import java.lang.reflect.Method;
 import java.util.Collection;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,7 +25,7 @@ public class PermissionAspect {
 	// }
 
 	/** 方法上注解情形 */
-	@Pointcut("execution(* cn.zzdz.usercontroller..*.*(..)) && @annotation(cd.zzdz.permission.IPermission)")
+	@Pointcut(" @annotation(cd.zzdz.permission.IPermission)")
 	public void aspect() {
 
 	}
@@ -36,10 +34,8 @@ public class PermissionAspect {
 	public void getmethod(JoinPoint point, IPermission permission) throws Exception {
 		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication()
 				.getAuthorities();
+		// Md5PasswordEncoder md5 = new Md5PasswordEncoder();
 
-		// Object target = point.getTarget();
-		// Class<?> classz = target.getClass();
-		Method m = ((MethodSignature) point.getSignature()).getMethod();
 		// 进行权限判断
 		boolean isEquals = false;
 

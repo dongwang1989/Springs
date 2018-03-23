@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,8 +23,8 @@ public class ContentRepository implements SecurityContextRepository {
 	private IUserService userService;
 
 	@Override
+	@Transactional
 	public SecurityContext loadContext(HttpRequestResponseHolder requestResponseHolder) {
-
 		HttpSession session = requestResponseHolder.getRequest().getSession();
 		SecurityContext getcontext;
 		if (session == null || session.getAttribute("username") == null) {
