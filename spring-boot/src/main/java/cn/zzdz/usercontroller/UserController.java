@@ -40,8 +40,15 @@ public class UserController {
 		return userService.saveUser(userdto);
 	}
 
+	// 修改用户信息
+	@RequestMapping(value = "/updateuser", method = RequestMethod.PUT)
+	public ResultDto updateuser(@RequestBody UserDto userdto) {
+		return userService.saveUser(userdto);
+	}
+
 	@RequestMapping("/loginout")
 	public ResultDto logout(HttpSession session) {
+		"".equals("");
 		return userService.logout(session);
 	}
 
