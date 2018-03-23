@@ -23,6 +23,7 @@ public class RoleController {
 	public void getrolelist(@RequestParam Integer page, @RequestParam Integer size) {
 
 		Page<SysRoleEntity> pages = sysrole.findBookNoCriteria(page, size);
+		System.out.println(pages);
 		// 如果不是超级管理员，则只查询自己创建的角色列表
 		// if(getUserId() != Constant.SUPER_ADMIN){
 		// params.put("createUserId", getUserId());
