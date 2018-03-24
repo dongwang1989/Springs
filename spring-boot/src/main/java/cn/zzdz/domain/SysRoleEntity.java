@@ -5,13 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.annotation.Id;
 
 /**
  * 角色
- *
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年9月18日 上午9:27:38
  */
 
 public class SysRoleEntity implements Serializable {
@@ -20,94 +17,46 @@ public class SysRoleEntity implements Serializable {
 	/**
 	 * 角色ID
 	 */
-
-	private Long roleId;
-
+	@Id
+	private Long role_id;
 	/**
 	 * 角色名称
 	 */
 	@NotBlank(message = "角色名称不能为空")
-	private String roleName;
-
+	private String role_name;
 	/**
 	 * 备注
 	 */
 	private String remark;
-
 	/**
 	 * 创建者ID
 	 */
-	private Long createUserId;
-
-	private List<Long> menuIdList;
-
+	private Long create_user_id;
 	/**
 	 * 创建时间
 	 */
-	private Date createTime;
+	private Date create_time;
 
-	/**
-	 * 设置：
-	 *
-	 * @param roleId
-	 */
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
+	private List<Long> menuIdList;
+
+	public Long getRole_id() {
+		return role_id;
 	}
 
-	/**
-	 * 获取：
-	 *
-	 * @return Long
-	 */
-	public Long getRoleId() {
-		return roleId;
+	public void setRole_id(Long role_id) {
+		this.role_id = role_id;
 	}
 
-	/**
-	 * 设置：角色名称
-	 *
-	 * @param roleName
-	 *            角色名称
-	 */
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public String getRole_name() {
+		return role_name;
 	}
 
-	/**
-	 * 获取：角色名称
-	 *
-	 * @return String
-	 */
-	public String getRoleName() {
-		return roleName;
+	public void setRole_name(String role_name) {
+		this.role_name = role_name;
 	}
 
-	/**
-	 * 设置：备注
-	 *
-	 * @param remark
-	 *            备注
-	 */
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-	/**
-	 * 获取：备注
-	 *
-	 * @return String
-	 */
 	public String getRemark() {
 		return remark;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
 	}
 
 	public List<Long> getMenuIdList() {
@@ -118,12 +67,24 @@ public class SysRoleEntity implements Serializable {
 		this.menuIdList = menuIdList;
 	}
 
-	public Long getCreateUserId() {
-		return createUserId;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
-	public void setCreateUserId(Long createUserId) {
-		this.createUserId = createUserId;
+	public Long getCreate_user_id() {
+		return create_user_id;
+	}
+
+	public void setCreate_user_id(Long create_user_id) {
+		this.create_user_id = create_user_id;
+	}
+
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 
 }
