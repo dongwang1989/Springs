@@ -22,11 +22,12 @@ public class SysRoleMenuEntity implements Serializable {
 	/**
 	 * 菜单ID
 	 */
+
 	private Long menuId;
 
 	/**
 	 * 设置：
-	 * 
+	 *
 	 * @param id
 	 */
 	public void setId(Long id) {
@@ -35,7 +36,7 @@ public class SysRoleMenuEntity implements Serializable {
 
 	/**
 	 * 获取：
-	 * 
+	 *
 	 * @return Long
 	 */
 	public Long getId() {
@@ -44,7 +45,7 @@ public class SysRoleMenuEntity implements Serializable {
 
 	/**
 	 * 设置：角色ID
-	 * 
+	 *
 	 * @param roleId
 	 *            角色ID
 	 */
@@ -54,7 +55,7 @@ public class SysRoleMenuEntity implements Serializable {
 
 	/**
 	 * 获取：角色ID
-	 * 
+	 *
 	 * @return Long
 	 */
 	public Long getRoleId() {
@@ -63,7 +64,7 @@ public class SysRoleMenuEntity implements Serializable {
 
 	/**
 	 * 设置：菜单ID
-	 * 
+	 *
 	 * @param menuId
 	 *            菜单ID
 	 */
@@ -73,7 +74,7 @@ public class SysRoleMenuEntity implements Serializable {
 
 	/**
 	 * 获取：菜单ID
-	 * 
+	 *
 	 * @return Long
 	 */
 	public Long getMenuId() {

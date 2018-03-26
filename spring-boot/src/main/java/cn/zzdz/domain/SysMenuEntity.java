@@ -17,7 +17,8 @@
 package cn.zzdz.domain;
 
 import java.io.Serializable;
-import java.util.List;
+
+import org.springframework.data.annotation.Id;
 
 /**
  * 菜单管理
@@ -33,19 +34,17 @@ public class SysMenuEntity implements Serializable {
 	/**
 	 * 菜单ID
 	 */
-	private Long menuId;
+	@Id
+	private Long menu_id;
 
 	/**
 	 * 父菜单ID，一级菜单为0
 	 */
-	private Long parentId;
+	private Long parent_id;
 
 	/**
 	 * 父菜单名称
 	 */
-
-	private String parentName;
-
 	/**
 	 * 菜单名称
 	 */
@@ -55,11 +54,6 @@ public class SysMenuEntity implements Serializable {
 	 * 菜单URL
 	 */
 	private String url;
-
-	/**
-	 * 授权(多个用逗号分隔，如：user:list,user:create)
-	 */
-	private String perms;
 
 	/**
 	 * 类型 0：目录 1：菜单 2：按钮
@@ -74,87 +68,41 @@ public class SysMenuEntity implements Serializable {
 	/**
 	 * 排序
 	 */
-	private Integer orderNum;
+	private Integer order_num;
 
-	/**
-	 * ztree属性
-	 */
+	// 非表中数据
+	private String parentName;
 
-	private Boolean open;
-
-	private List<?> list;
-
-	public void setMenuId(Long menuId) {
-		this.menuId = menuId;
+	public Long getMenu_id() {
+		return menu_id;
 	}
 
-	public Long getMenuId() {
-		return menuId;
+	public void setMenu_id(Long menu_id) {
+		this.menu_id = menu_id;
 	}
 
-	/**
-	 * 设置：父菜单ID，一级菜单为0
-	 *
-	 * @param parentId
-	 *            父菜单ID，一级菜单为0
-	 */
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
+	public Long getParent_id() {
+		return parent_id;
 	}
 
-	/**
-	 * 获取：父菜单ID，一级菜单为0
-	 *
-	 * @return Long
-	 */
-	public Long getParentId() {
-		return parentId;
+	public void setParent_id(Long parent_id) {
+		this.parent_id = parent_id;
 	}
 
-	/**
-	 * 设置：菜单名称
-	 *
-	 * @param name
-	 *            菜单名称
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * 获取：菜单名称
-	 *
-	 * @return String
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * 设置：菜单URL
-	 *
-	 * @param url
-	 *            菜单URL
-	 */
-	public void setUrl(String url) {
-		this.url = url;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	/**
-	 * 获取：菜单URL
-	 *
-	 * @return String
-	 */
 	public String getUrl() {
 		return url;
 	}
 
-	public String getPerms() {
-		return perms;
-	}
-
-	public void setPerms(String perms) {
-		this.perms = perms;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public Integer getType() {
@@ -165,50 +113,20 @@ public class SysMenuEntity implements Serializable {
 		this.type = type;
 	}
 
-	/**
-	 * 设置：菜单图标
-	 *
-	 * @param icon
-	 *            菜单图标
-	 */
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
-	/**
-	 * 获取：菜单图标
-	 *
-	 * @return String
-	 */
 	public String getIcon() {
 		return icon;
 	}
 
-	/**
-	 * 设置：排序
-	 *
-	 * @param orderNum
-	 *            排序
-	 */
-	public void setOrderNum(Integer orderNum) {
-		this.orderNum = orderNum;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
-	/**
-	 * 获取：排序
-	 *
-	 * @return Integer
-	 */
-	public Integer getOrderNum() {
-		return orderNum;
+	public Integer getOrder_num() {
+		return order_num;
 	}
 
-	public List<?> getList() {
-		return list;
-	}
-
-	public void setList(List<?> list) {
-		this.list = list;
+	public void setOrder_num(Integer order_num) {
+		this.order_num = order_num;
 	}
 
 	public String getParentName() {
@@ -219,11 +137,17 @@ public class SysMenuEntity implements Serializable {
 		this.parentName = parentName;
 	}
 
-	public Boolean getOpen() {
-		return open;
+	public String getPerms() {
+		return perms;
 	}
 
-	public void setOpen(Boolean open) {
-		this.open = open;
+	public void setPerms(String perms) {
+		this.perms = perms;
 	}
+
+	/**
+	 * 授权(多个用逗号分隔，如：user:list,user:create)
+	 */
+	private String perms;
+
 }

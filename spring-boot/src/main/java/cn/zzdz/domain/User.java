@@ -13,11 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 @Entity
-// @Table(name = "t_user")
-// @NamedQueries({ @NamedQuery(name = "findUserWithId", query = "SELECT u FROM
-// User u "),
-// @NamedQuery(name = "findUserWithName", query = "SELECT u FROM User u WHERE
-// u.name = :name") })
 public class User implements Serializable {
 	/**
 	 * EntityManager em = emf.createEntityManager(); Query query =
