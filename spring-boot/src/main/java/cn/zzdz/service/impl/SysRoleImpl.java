@@ -75,7 +75,7 @@ public class SysRoleImpl implements ISysRole {
 
 	@Override
 	public ResultDto delete(Long roleid) {
-		r.delete(roleid);
+		r.deleteById(roleid);
 		return null;
 	}
 

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,8 +63,8 @@ public class UserController {
 
 	@RequestMapping("/whoim2")
 	public Set<String> whoIm2(HttpSession session) {
-		Md5PasswordEncoder md5 = new Md5PasswordEncoder();
-		System.out.println(md5.encodePassword("123", "wd"));
+		// Md5PasswordEncoder md5 = new Md5PasswordEncoder();
+		// System.out.println(md5.encodePassword("123", "wd"));
 		Set<String> set = new HashSet<>();
 		set = userService.cafindUserInfoByuser("zhangsan");
 		session.setAttribute("username", "zhangsan");
