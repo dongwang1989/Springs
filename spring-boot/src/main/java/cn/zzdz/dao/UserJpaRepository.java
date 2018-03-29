@@ -4,9 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import cn.zzdz.domain.User;
 
+@Repository
 public interface UserJpaRepository extends JpaRepository<User, Integer> {
 	@Query("from User u where u.username=:username and u.pwd=:pwd")
 	public User getUser(@Param("username") String username, @Param("pwd") String pwd);

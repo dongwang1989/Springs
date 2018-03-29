@@ -2,14 +2,14 @@ package cn.zzdz.service;
 
 import org.springframework.data.domain.Page;
 
-import cn.zzdz.domain.SysRoleEntity;
+import cn.zzdz.domain.SysRole;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.SysRoleDto;
 
 public interface ISysRole {
-	Page<SysRoleEntity> findRoleNoCriteria(Integer page, Integer size);
+	Page<SysRole> findRoleNoCriteria(Integer page, Integer size);
 
-	Page<SysRoleEntity> findRoleCriteria(Integer page, Integer size, SysRoleDto roleQuery);
+	Page<SysRole> findRoleCriteria(Integer page, Integer size, SysRoleDto roleQuery);
 
 	public SysRoleDto findrolebyroleid(Long roleid);
 

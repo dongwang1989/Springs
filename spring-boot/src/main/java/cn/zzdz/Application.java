@@ -6,8 +6,17 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-public class Application {
+public class Application {// extends WebMvcConfiguration {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
+
+	// @Override
+	//
+	// public void configureContentNegotiation(ContentNegotiationConfigurer
+	// configurer) {
+	//
+	// configurer.favorPathExtension(false);
+	//
+	// }
 }
