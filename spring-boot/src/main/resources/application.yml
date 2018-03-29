@@ -1,5 +1,5 @@
 args: 
- environment: none
+   environment: none
 spring:
    datasource:
       driver-class-name: com.mysql.jdbc.Driver
@@ -10,10 +10,12 @@ spring:
      database: MYSQL
      hibernate.ddl-auto: update
      show-sql: true 
-     
+   profiles:
+     active: qa
 server:
    error:
      path: /error 
+
      
      
      

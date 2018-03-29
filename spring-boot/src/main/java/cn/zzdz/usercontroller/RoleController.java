@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cd.zzdz.permission.IPermission;
 import cn.zzdz.dao.UserJpaRepository;
+import cn.zzdz.permission.IPermission;
 
 //@RestController
 //@RequestMapping("/sys/role")
