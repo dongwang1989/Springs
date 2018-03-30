@@ -25,7 +25,7 @@ public class PermissionAspect {
 	// }
 
 	/** 方法上注解情形 */
-	@Pointcut(" @annotation(cd.zzdz.permission.IPermission)")
+	@Pointcut(" @annotation(cn.zzdz.permission.IPermission)")
 	public void aspect() {
 
 	}

@@ -98,7 +98,7 @@ public class UserController {
 	@Value("${args.environment}")
 	private String environment;
 
-	@GetMapping("GET/environment")
+	@GetMapping("/GET/environment")
 	public String getenvironment() {
 		return environment;
 	}
