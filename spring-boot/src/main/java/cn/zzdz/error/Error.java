@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import cn.zzdz.ErrorMessage;
 
+@SuppressWarnings("serial")
 @EnableConfigurationProperties(ErrorMessage.class)
 public class Error extends RuntimeException {
 	@Autowired
