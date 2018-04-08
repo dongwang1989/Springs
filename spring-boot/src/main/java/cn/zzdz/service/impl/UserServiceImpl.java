@@ -10,10 +10,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.zzdz.ErrorMessage;
 import cn.zzdz.dao.UserJpaRepository;
 import cn.zzdz.domain.User;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
+import cn.zzdz.error.Error;
 import cn.zzdz.service.IUserService;
 
 @Service
@@ -45,6 +47,7 @@ public class UserServiceImpl implements IUserService {
 		return resultDto;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ResultDto getUser(UserDto userDtolog, HttpSession session) {
 		ResultDto resultDto = new ResultDto();
@@ -57,7 +60,9 @@ public class UserServiceImpl implements IUserService {
 				resultDto.setResult("登陆成功");
 				session.setAttribute("username", user.getUsername());
 			} else {
-				resultDto.setResult("登陆error");
+				ErrorMessage t = ErrorMessage.INCORRECT_PASSWORD;
+				throw new Error(t, user.getUsername());
+				// resultDto.setResult("登陆error");
 			}
 		}
 		return resultDto;
