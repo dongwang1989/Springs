@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
+import cn.zzdz.enums.ErrorMessage;
+import cn.zzdz.enums.WarningMessage;
+import cn.zzdz.error.Error;
 import cn.zzdz.permission.IPermission;
 import cn.zzdz.service.IUserService;
 
@@ -87,12 +90,12 @@ public class UserController {
 
 	@RequestMapping("/exception/checked")
 	public void checkedException() throws Exception {
-		throw new Exception("A");
+		throw new Error(WarningMessage.CONTROLLER_TESTA);
 	}
 
 	@RequestMapping("/exception/runtime")
 	public void runtimeException() {
-		throw new RuntimeException("B");
+		throw new Error(ErrorMessage.NOTCONTROLLER_MESSAGEB);
 	}
 
 	@Value("${args.environment}")

@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import cn.zzdz.enums.ErrorMessage;
+import cn.zzdz.error.Error;
 import cn.zzdz.permission.IPermission;
 
 @Component
@@ -44,7 +46,7 @@ public class PermissionAspect {
 			isEquals = true;
 		}
 		if (isEquals == false) {
-			throw new Exception("权限不够");
+			throw new Error(ErrorMessage.POWER_NOTENOUGH, "sorry");
 		}
 	}
 
