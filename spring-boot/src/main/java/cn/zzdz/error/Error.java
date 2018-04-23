@@ -1,28 +1,28 @@
 package cn.zzdz.error;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.MessageSource;
 
-import cn.zzdz.ErrorMessage;
+import cn.zzdz.dto.ResultDto;
+import cn.zzdz.enums.ErrorMessage;
 
-@SuppressWarnings("serial")
-@EnableConfigurationProperties(ErrorMessage.class)
 public class Error extends RuntimeException {
-	@Autowired
-	private ErrorMessage message;
+
+	private static final long serialVersionUID = 1L;
 	private String values;
+	@Autowired
+	private MessageSource ms;
 
 	public Error(ErrorMessage message, String... params) {
-		for (String param : params) {
-			this.values += param;
-		}
-		this.message = message;
-		this.values += this.message.name();
+
+		values = ms.getMessage(message.toString(), params, null);
 	}
 
 	@Override
 	public String getMessage() {
-		return values;
+		ResultDto resultdto = new ResultDto();
+		resultdto.setResult(values);
+		return resultdto.toString();
 	}
 
 }

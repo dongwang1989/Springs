@@ -12,9 +12,16 @@ spring:
      show-sql: true 
    profiles:
      active: "profileActive"
+   messages:
+     always-use-message-format: false
+     basename: enums
+     cache-seconds: -1
+     encoding: UTF-8
+     fallback-to-system-locale: true
 server:
    error:
      path: /error 
+     
 
 
      
