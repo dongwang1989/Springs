@@ -15,15 +15,16 @@ import cn.zzdz.repository.ContentRepository;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.securityContext().securityContextRepository(createsecurity()).and().authorizeRequests().antMatchers("/",
-				"/whoim2", "/hello/{param}", "/login", "/whoim", "/exception/{param}", "/GET/environment").permitAll()
-				.anyRequest().authenticated().and().csrf().disable();
+		http.securityContext().securityContextRepository(createsecurity()).and().authorizeRequests()
+				.antMatchers("/", "/whoim2", "/hello/{param}", "/login", "/whoim", "/exception/{param}",
+						"/GET/environment", "/ha", "/a.html")
+				.permitAll().anyRequest().authenticated().and().csrf().disable();
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/whoim2", "/favicon.ico", "/webjars/**", "/swagger-resources/**",
-				"/swagger-ui.html", "2/api-docs/**", "/GET/environment");
+				"/swagger-ui.html", "2/api-docs/**", "/GET/environment", "/ha", "/a.html", "/static/**");
 	}
 
 	@Bean

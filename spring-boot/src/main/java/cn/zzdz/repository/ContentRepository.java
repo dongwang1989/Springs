@@ -15,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpRequestResponseHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
 
-import cn.zzdz.service.IUserService;
+import cn.zzdz.interfaces.service.IUserService;
 import cn.zzdz.service.impl.AuthorityImpl;
 
 public class ContentRepository implements SecurityContextRepository {

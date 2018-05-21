@@ -1,4 +1,4 @@
-package cn.zzdz.service;
+package cn.zzdz.interfaces.service;
 
 import java.util.Set;
 

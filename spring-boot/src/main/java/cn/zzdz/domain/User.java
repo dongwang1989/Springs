@@ -32,6 +32,7 @@ public class User implements Serializable {
 	private String sex;
 	private String username;
 	private String pwd;
+
 	@ElementCollection
 	@CollectionTable(name = "user_permission", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "permission")

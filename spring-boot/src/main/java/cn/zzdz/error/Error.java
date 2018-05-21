@@ -1,14 +1,15 @@
 package cn.zzdz.error;
 
 import cn.zzdz.dto.ResultDto;
+import cn.zzdz.interfaces.enummessage.INotifyMessage;
 
 public class Error extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private final String values;
 
-	public Error(@SuppressWarnings("rawtypes") final Enum message, final String... params) {
+	public Error(final INotifyMessage message, final String... params) {
 
-		values = MessageSourceHolder.getMessageSource().getMessage(message.toString(), params, null);
+		values = MessageSourceHolder.getMessageSource().getMessage(message.getEnumValue(), params, null);
 	}
 
 	@Override

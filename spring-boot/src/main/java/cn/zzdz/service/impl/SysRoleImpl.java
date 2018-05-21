@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import cn.zzdz.domain.SysRole;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.SysRoleDto;
-import cn.zzdz.service.ISysRole;
+import cn.zzdz.interfaces.service.ISysRole;
 
 public class SysRoleImpl implements ISysRole {
 

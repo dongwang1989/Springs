@@ -1,4 +1,4 @@
-package cn.zzdz.service;
+package cn.zzdz.interfaces.service;
 
 import org.springframework.data.domain.Page;
 

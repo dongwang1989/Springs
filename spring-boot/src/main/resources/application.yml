@@ -3,7 +3,7 @@ args:
 spring:
    datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://124.130.131.90:3306/newwd?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=PRC&useSSL=false
+      url: jdbc:mysql://172.16.100.1:3306/newwd?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=PRC&useSSL=false
       username: root
       password: 123456
    jpa:
@@ -18,10 +18,11 @@ spring:
      cache-seconds: -1
      encoding: UTF-8
      fallback-to-system-locale: true
+
 server:
    error:
      path: /error 
-     
+   
 
 
      
