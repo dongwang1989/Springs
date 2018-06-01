@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SuppressWarnings("deprecation")
+//@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebMvc
 @EnableSwagger2

@@ -29,7 +29,7 @@ public class ExceptionController extends AbstractErrorController {// extends Abs
 		return ERROR_PATH;
 	}
 
-	@RequestMapping
+	@RequestMapping("/error")
 	public @ResponseBody ResponseEntity<Map<String, Object>> error(HttpServletRequest request, Exception exception)
 			throws Exception {
 		Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");

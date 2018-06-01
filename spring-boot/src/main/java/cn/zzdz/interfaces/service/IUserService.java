@@ -1,5 +1,6 @@
 package cn.zzdz.interfaces.service;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -28,5 +29,6 @@ public interface IUserService {
 
 	// @Cacheable(value = "users")
 	public Set<String> cafindUserInfoByuser(String username);
-	// public List<User> ListfindUserPermission(Integer id);
+
+	public List<User> Likenames(String username);
 }

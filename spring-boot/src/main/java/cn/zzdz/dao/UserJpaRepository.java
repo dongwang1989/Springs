@@ -1,5 +1,7 @@
 package cn.zzdz.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +26,8 @@ public interface UserJpaRepository extends JpaRepository<User, Integer> {
 
 	// @Query("select User from user_permission User where User.id=:id")
 	// public List<User> ListfindUserinfo(@Param("id") Integer id);
+	@Query("from User u where u.username like %:username% limit 1,2")
+	public List<User> Likenames(@Param("username") String username);
 
 	@Modifying
 	@Query("delete from User where id=:id")

@@ -2,6 +2,7 @@ package cn.zzdz.usercontroller;
 
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.zzdz.domain.User;
 import cn.zzdz.dto.ResultDto;
 import cn.zzdz.dto.UserDto;
 import cn.zzdz.enums.ErrorMessage;
@@ -97,8 +99,9 @@ public class UserController {
 	}
 
 	@RequestMapping("/ha")
-	public String ha() {
-		return "a.html";
+	public List<User> ha(@RequestParam String username) {
+		System.out.println(username);
+		return userService.Likenames(username);
 	}
 
 	@RequestMapping("/exception/runtime")

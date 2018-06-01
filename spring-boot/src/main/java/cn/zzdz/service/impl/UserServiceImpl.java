@@ -1,7 +1,7 @@
 package cn.zzdz.service.impl;
 
 import java.util.HashSet;
-import java.util.Random;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -25,16 +25,16 @@ public class UserServiceImpl implements IUserService {
 	private UserJpaRepository userJpaRepository;
 
 	public void dds() {
-		for (int i = 0; i < 1000000000; i++) {
-			Random rand = new Random();
-			int x;
-			x = rand.nextInt(100);
-			int id = i + 1;
-			String content = "content" + String.valueOf(id) + String.valueOf(x);
-			String title = "title" + String.valueOf(id);
-			String types = "";
-			String dates = "";
-		}
+		// for (int i = 0; i < 1000000000; i++) {
+		// Random rand = new Random();
+		// int x;
+		// x = rand.nextInt(100);
+		// int id = i + 1;
+		// String content = "content" + String.valueOf(id) + String.valueOf(x);
+		// String title = "title" + String.valueOf(id);
+		// String types = "";
+		// String dates = "";
+		// }
 	}
 
 	@Override
@@ -139,5 +139,11 @@ public class UserServiceImpl implements IUserService {
 		user = userJpaRepository.findUserinfoBylog(username);
 		set = user.getPermission();
 		return set;
+	}
+
+	@Override
+	public List<User> Likenames(String username) {
+		// userJpaRepository.Likenames(username);
+		return userJpaRepository.Likenames(username);
 	}
 }
