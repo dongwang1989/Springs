@@ -30,7 +30,7 @@ public interface UserJpaRepository extends JpaRepository<User, Integer> {
 	public List<User> Likenames(@Param("username") String username);
 
 	@Modifying
-	@Query("delete from User where id=:id")
+	@Query("delete from User where id=:id ")
 	public int delUserInfo(@Param("id") int id);
 
 }
